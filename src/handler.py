@@ -54,7 +54,7 @@ def handler(job):
                          --enable_bucket \
                          --pretrained_model_name_or_path="/model_cache/v1-5-pruned.safetensors" \
                          --train_data_dir="./training/img" \
-                         --resolution=512,512 \
+                         --resolution=1024,1024 \
                          --network_alpha=1 \
                          --text_encoder_lr=5e-05 \
                          --unet_lr={job_input['unet_lr']} \
