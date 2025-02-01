@@ -100,6 +100,7 @@ def handler(job):
                          --output_dir="./training/model" \
                          --output_name={out_id} \
                          --max_data_loader_n_workers={job_input['max_data_loader_num_workers']} \
+                         --caption_extension=txt \
                          --save_model_as=safetensors \
                          --network_module=networks.lora \
                          --optimizer_type {job_input['optimizer_type']} \
