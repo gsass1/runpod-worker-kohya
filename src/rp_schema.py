@@ -3,6 +3,14 @@ INPUT_SCHEMA = {
         'type': str,
         'required': True
     },
+    'model_url': {
+        'type': str,
+        'required': True
+    },
+    'out_id': {
+        'type': str,
+        'required': False
+    },
     'instance_name': {
         'type': str,
         'required': True
