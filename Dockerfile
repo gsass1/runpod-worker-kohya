@@ -18,11 +18,13 @@ COPY builder/requirements.txt /requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --upgrade pip && \
     pip install --upgrade -r /requirements.txt --no-cache-dir && \
+    pip install --force-reinstall -v "numpy==1.25.2" && \
     rm /requirements.txt
+
 
 # Add src files (Worker Template)
 ADD src /sd-scripts
 
 WORKDIR /sd-scripts
 
-CMD python3 -u handler.py
+CMD ["/sd-scripts/start.sh"]

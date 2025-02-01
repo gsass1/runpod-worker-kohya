@@ -20,4 +20,5 @@ git clone https://github.com/kohya-ss/sd-scripts.git && \
     git checkout 6e3c1d0b58f03522f294dc2b0acbbbecc944d018
 
 # Cache models
+wget https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors -P /model_cache
 #wget https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned.safetensors -P /model_cache

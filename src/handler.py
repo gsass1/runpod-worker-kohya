@@ -14,7 +14,6 @@ from rp_schema import INPUT_SCHEMA
 
 
 def handler(job):
-
     job_input = job['input']
 
     if 'errors' in (job_input := validate(job_input, INPUT_SCHEMA)):
@@ -50,13 +49,18 @@ def handler(job):
                     flat_directory
                 )
 
-    subprocess.run(f"""accelerate launch --num_cpu_threads_per_process 1 train_network.py \
+    subprocess.run(f"""accelerate launch --num_cpu_threads_per_process=1 sdxl_train_network.py \
                          --enable_bucket \
-                         --pretrained_model_name_or_path="/model_cache/v1-5-pruned.safetensors" \
+                         --pretrained_model_name_or_path="/model_cache/sd_xl_base_1.0.safetensors" \
                          --train_data_dir="./training/img" \
                          --resolution=1024,1024 \
                          --network_alpha=1 \
                          --text_encoder_lr=5e-05 \
+                         --no_half_vae \
+                         --mixed_precision='fp16' \
+                         --save_precision='fp16' \
+                         --full_fp16 \
+                         --gradient_checkpointing \
                          --unet_lr={job_input['unet_lr']} \
                          --network_dim={job_input['network_dim']} \
                          --lr_scheduler={job_input['lr_scheduler']} \
@@ -67,15 +71,11 @@ def handler(job):
                          --max_train_steps={job_input['max_train_steps']} \
                          --output_dir="./training/model" \
                          --output_name={job['id']} \
-                         --mixed_precision={job_input['mixed_precision']} \
-                         --save_precision={job_input['save_precision']} \
                          --max_data_loader_n_workers={job_input['max_data_loader_num_workers']} \
                          --save_model_as=safetensors \
                          --network_module=networks.lora \
+                         --optimizer_type {job_input['optimizer_type']} \
                          --cache_latents --bucket_reso_steps=64 --bucket_no_upscale""", shell=True, check=True)
-
-
-# --optimizer_type = {job_input['optimizer_type']} \
 
     job_s3_config = job.get('s3Config')
 
