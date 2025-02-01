@@ -38,9 +38,13 @@ def handler(job):
         if os.path.exists(VOLUME_DIR):
             print(f"Moving model to volume for caching: {volume_model_path}")
             shutil.copy(downloaded_model['file_path'], volume_model_path)
+            original_file_path = downloaded_model['file_path']
 
             # Update the file path to the volume directory
             downloaded_model['file_path'] = volume_model_path
+
+            # Delete old file
+            os.remove(original_file_path)
 
     # Download the zip file
     print(f"Downloading zip file from {job_input['zip_url']}")
