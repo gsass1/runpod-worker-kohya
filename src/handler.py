@@ -59,7 +59,7 @@ def handler(job):
         os.mkdir('./training/logs')
 
     # Make clean data directory
-    allowed_extensions = [".jpg", ".jpeg", ".png"]
+    allowed_extensions = [".jpg", ".jpeg", ".png", ".txt"]
     flat_directory = f"./training/img/{job_input['steps']}_{job_input['instance_name']} {job_input['class_name']}"
     os.makedirs(flat_directory, exist_ok=True)
 
