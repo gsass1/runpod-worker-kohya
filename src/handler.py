@@ -112,6 +112,7 @@ def handler(job):
         file_location=f"./training/model/{out_id}.safetensors",
         bucket_creds=job_s3_config,
         bucket_name=None if job_s3_config is None else job_s3_config['bucketName'],
+        prefix="lora"
     )
 
     return {"lora": uploaded_lora_url}
