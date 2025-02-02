@@ -29,6 +29,11 @@ INPUT_SCHEMA = {
         'required': False,
         'default': 256
     },
+    'network_alpha': {
+        'type': int,
+        'required': False,
+        'default': 256
+    },
     'lr_scheduler_num_cycles': {
         'type': int,
         'required': False,

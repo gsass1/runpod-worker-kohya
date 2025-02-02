@@ -91,6 +91,7 @@ def handler(job):
                          --gradient_checkpointing \
                          --unet_lr={job_input['unet_lr']} \
                          --network_dim={job_input['network_dim']} \
+                         --network_alpha={job_input['network_alpha']} \
                          --lr_scheduler={job_input['lr_scheduler']} \
                          --learning_rate={job_input['learning_rate']} \
                          --lr_scheduler_num_cycles={job_input['lr_scheduler_num_cycles']} \
