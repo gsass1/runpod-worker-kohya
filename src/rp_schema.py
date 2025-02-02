@@ -24,6 +24,11 @@ INPUT_SCHEMA = {
         'required': False,
         'default': 0.0001
     },
+    'text_encoder_lr': {
+        'type': float,
+        'required': False,
+        'default': 0.00005
+    },
     'network_dim': {
         'type': int,
         'required': False,
@@ -88,5 +93,22 @@ INPUT_SCHEMA = {
         'type': int,
         'required': False,
         'default': 125
+    },
+    "http_log_endpoint": {
+        "type": str,
+        "required": True
+    },
+    "http_log_name": {
+        "type": str,
+        "required": True
+    },
+    "http_log_token": {
+        "type": str,
+        "required": True
+    },
+    "http_log_every": {
+        "type": int,
+        "required": False,
+        "default": 5
     }
 }

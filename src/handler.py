@@ -82,8 +82,7 @@ def handler(job):
                          --pretrained_model_name_or_path={downloaded_model['file_path']} \
                          --train_data_dir="./training/img" \
                          --resolution=1024,1024 \
-                         --network_alpha=1 \
-                         --text_encoder_lr=5e-05 \
+                         --text_encoder_lr={job_input['text_encoder_lr']} \
                          --no_half_vae \
                          --mixed_precision='fp16' \
                          --save_precision='fp16' \
@@ -105,6 +104,11 @@ def handler(job):
                          --save_model_as=safetensors \
                          --network_module=networks.lora \
                          --optimizer_type {job_input['optimizer_type']} \
+                         --http-log \
+                         --http-log-endpoint {job_input['http_log_endpoint']} \
+                         --http-log-name "{job_input['http_log_name']}" \
+                         --http-log-token {job_input['http_log_token']} \
+                         --http-log-every {job_input['http_log_every']}
                          --cache_latents --bucket_reso_steps=64 --bucket_no_upscale""", shell=True, check=True)
 
     job_s3_config = job.get('s3Config')
