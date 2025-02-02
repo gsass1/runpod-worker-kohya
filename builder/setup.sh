@@ -17,7 +17,7 @@ rm -rf /var/lib/apt/lists/*
 # Clone kohya-ss/sd-scripts
 git clone https://github.com/gsass1/sd-scripts.git && \
     cd sd-scripts && \
-    git checkout http-logging
+    git checkout f8e8f89b1d0eb613d7f0fadf61a9f695fd4503f4
 
 # Cache models
 #wget https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors -P /model_cache
