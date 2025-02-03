@@ -104,6 +104,7 @@ def handler(job):
                          --save_model_as=safetensors \
                          --network_module=networks.lora \
                          --optimizer_type {job_input['optimizer_type']} \
+                         --logging_dir ./log \
                          --http-log \
                          --http-log-endpoint {job_input['http_log_endpoint']} \
                          --http-log-name "{job_input['http_log_name']}" \
