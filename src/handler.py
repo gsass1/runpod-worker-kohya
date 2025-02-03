@@ -109,7 +109,7 @@ def handler(job):
                          --http-log-endpoint {job_input['http_log_endpoint']} \
                          --http-log-name "{job_input['http_log_name']}" \
                          --http-log-token {job_input['http_log_token']} \
-                         --http-log-every {job_input['http_log_every']}
+                         --http-log-every {job_input['http_log_every']} \
                          --cache_latents --bucket_reso_steps=64 --bucket_no_upscale""", shell=True, check=True)
 
     job_s3_config = job.get('s3Config')
